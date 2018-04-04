@@ -1,7 +1,10 @@
 #!/bin/bash
 
+## Default is testing environment authority, for production set ENV varriable to https://acme-v02.api.letsencrypt.org/directory
+[[ -z "${CERTAUTH}" ]] && CERTAUTH="https://acme-staging-v02.api.letsencrypt.org/directory"
+
 echo ${DOMAINS} > dehydrated/domains.txt
-printf "CA=\"https://acme-staging-v02.api.letsencrypt.org/directory\" \nCERTDIR=\"${PWD}/certs\"" > dehydrated/config
+printf "CA=\"${CERTAUTH}\" \nCERTDIR=\"${PWD}/certs\" \nWELLKNOWN=\"${PWD}\"" > dehydrated/config
 
 dehydrated/dehydrated --register --accept-terms
 dehydrated/dehydrated --challenge dns-01 -k le-godaddy-dns/godaddy.py -c
