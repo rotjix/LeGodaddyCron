@@ -1,7 +1,7 @@
 FROM ubuntu:16.04
 MAINTAINER Atis Gūtmanis
 
-RUN apt-get update && apt-get upgrade -yqq && apt-get install -yqq python3 python3-pip curl php git openssl
+RUN apt-get update && apt-get upgrade -yqq && apt-get install -yqq python3 python3-pip curl php git openssl curl
 
 WORKDIR /root
 

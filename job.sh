@@ -6,6 +6,7 @@
 echo ${DOMAINS} > dehydrated/domains.txt
 printf "CA=\"${CERTAUTH}\" \nCERTDIR=\"${PWD}/certs\" \nWELLKNOWN=\"${PWD}\"" > dehydrated/config
 
+dehydrated/dehydrated --env
 dehydrated/dehydrated --register --accept-terms
 dehydrated/dehydrated --challenge dns-01 -k le-godaddy-dns/godaddy.py -c
 
